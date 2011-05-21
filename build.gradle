@@ -1,0 +1,26 @@
+apply plugin: 'groovy'
+apply plugin: 'eclipse'
+
+
+repositories {
+	mavenCentral()
+	repositories{
+		add(new org.apache.ivy.plugins.resolver.URLResolver()) {
+			name = "GitHub"
+			addArtifactPattern 'http://cloud.github.com/downloads/[organisation]/[module]/[module]-[revision].[ext]'
+		}
+	}
+}
+
+dependencies {
+	groovy 'org.codehaus.groovy:groovy:1.8.0'
+	compile 'org.spockframework:spock-core:0.5-groovy-1.8', {
+		exclude group: 'org.codehaus.groovy', name: 'groovy-all', version: '1.8.0-beta-3-SNAPSHOT'
+	}
+	compile 'glaforge:gaelyk:0.7'
+	compile 'com.google.appengine:appengine-api-1.0-sdk:1.5.0'
+	compile 'com.google.appengine:appengine-api-labs:1.5.0'
+	
+}
+
+
