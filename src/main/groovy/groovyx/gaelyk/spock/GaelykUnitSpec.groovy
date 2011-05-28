@@ -26,9 +26,9 @@ class GaelykUnitSpec extends spock.lang.Specification {
 		
 		Object.mixin GaelykCategory
 		
-		datastore = DatastoreServiceFactory.getDatastoreService()
-		memcache = MemcacheServiceFactory.getMemcacheService()
-		mail = MailServiceFactory.getMailService()
+		datastore = DatastoreServiceFactory.datastoreService
+		memcache = MemcacheServiceFactory.memcacheService
+		mail = MailServiceFactory.mailService
 		urlFetch = Mock(URLFetchService)
 	}
 	
