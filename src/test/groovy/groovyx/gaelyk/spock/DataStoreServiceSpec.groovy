@@ -10,8 +10,8 @@ class DataStoreServiceSpec extends GaelykUnitSpec {
 	def url = 'http://gaelyk.appspot.com'
 
 	def setup(){
-		groovlet 'ds_test.groovy'
-		ds_test.params.url = url
+		groovlet 'dataStoreTest.groovy'
+		dataStoreTest.params.url = url
 	}
 
 	def "the datastore is present in the spec fixture"(){
@@ -26,13 +26,13 @@ class DataStoreServiceSpec extends GaelykUnitSpec {
 		given: "the initialised groovlet"
 		
 		expect: "the datastore in the binding"
-		ds_test.datastore != null
-		ds_test.datastore instanceof com.google.appengine.api.datastore.DatastoreService
+		dataStoreTest.datastore != null
+		dataStoreTest.datastore instanceof com.google.appengine.api.datastore.DatastoreService
 	}
 	
 	def "the datastore is used from within the groovlet"(){
 		given: "the initialised groovlet is invoked and data is persisted"
-		ds_test.get()
+		dataStoreTest.get()
 		
 		when: "the datastore is queried for data"
 		def query = new Query("person")
