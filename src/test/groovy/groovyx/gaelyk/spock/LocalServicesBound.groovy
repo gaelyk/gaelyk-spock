@@ -12,27 +12,6 @@ class LocalServicesBound extends GaelykUnitSpec {
 	def setup(){
 		groovlet 'local.groovy'
 		local.params.url = url
-		local.person = [firstname:'Marco', lastname:'Vermeulen', age:'40']
-	}
-
-	def "the memcache service is present in the groovlet binding"(){
-		given: "the initialised groovlet"
-		
-		expect: "the memcache in the binding"
-		local.memcache != null
-		local.memcache instanceof com.google.appengine.api.memcache.MemcacheService
-	}
-	
-	def "the memcache service is used from within the groovlet"(){
-		given: "the initialised groovlet is invoked and data is cached"
-		local.get()
-		
-		expect: "the data to be present in the cache"
-		memcache.contains 'person'
-		def person = memcache.get('person')
-		person.firstname == local.person.firstname
-		person.lastname == local.person.lastname
-		person.age == local.person.age
 	}
 	
 	def "the mail service is present in the groovlet binding"(){

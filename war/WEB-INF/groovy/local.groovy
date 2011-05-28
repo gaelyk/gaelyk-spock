@@ -1,7 +1,3 @@
-//memcache
-assert memcache
-memcache.put('person', person)
-
 //mail
 assert mail
 mail.send sender: params.sender, 
