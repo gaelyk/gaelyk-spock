@@ -1,7 +1,5 @@
 package groovyx.gaelyk.spock
 
-//import com.google.appengine.tools.development.*
-
 class MemCacheServiceSpec extends GaelykUnitSpec {
 
 	def setup(){

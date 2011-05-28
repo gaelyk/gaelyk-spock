@@ -2,16 +2,12 @@ package groovyx.gaelyk.spock
 
 import com.google.appengine.api.datastore.*
 import com.google.appengine.tools.development.*
-import com.google.appengine.api.urlfetch.*
 import static com.google.appengine.api.datastore.FetchOptions.Builder.*
 
 class DataStoreServiceSpec extends GaelykUnitSpec {
 
-	def url = 'http://gaelyk.appspot.com'
-
 	def setup(){
 		groovlet 'dataStoreTest.groovy'
-		dataStoreTest.params.url = url
 	}
 
 	def "the datastore is present in the spec fixture"(){
