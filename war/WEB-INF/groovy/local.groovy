@@ -1,19 +1,6 @@
-import com.google.appengine.api.datastore.*
-
-//datastore
-assert datastore
-def entity = new Entity('person')
-entity.firstname = 'Marco'
-entity.lastname = 'Vermeulen'
-entity.age = 40
-entity.save()
-
-log.info "My name is $entity.firstname $entity.lastname"
-log.info "My age is $entity.age"
-
 //memcache
 assert memcache
-memcache.put('person', entity)
+memcache.put('person', person)
 
 //mail
 assert mail
@@ -22,7 +9,7 @@ mail.send sender: params.sender,
 	subject: "Hello",
 	textBody: "Hello, how are you doing? -- MrG"
 
-//urlFetch	
+//urlFetch
 assert urlFetch
 def response = urlFetch.fetch(new URL(params.url))
 log.info response

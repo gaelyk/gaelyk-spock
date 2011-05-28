@@ -12,41 +12,9 @@ class LocalServicesBound extends GaelykUnitSpec {
 	def setup(){
 		groovlet 'local.groovy'
 		local.params.url = url
+		local.person = [firstname:'Marco', lastname:'Vermeulen', age:'40']
 	}
 
-	def "the datastore is present in the spec fixture"(){
-		given: "this spec with its fixture"
-		
-		expect: "to access the datastore instance in the parent object."
-		datastore != null
-		datastore instanceof DatastoreService
-	}
-	
-	def "the datastore is present in the groovlet binding"(){
-		given: "the initialised groovlet"
-		
-		expect: "the datastore in the binding"
-		local.datastore != null
-		local.datastore instanceof com.google.appengine.api.datastore.DatastoreService
-	}
-	
-	def "the datastore is used from within the groovlet"(){
-		given: "the initialised groovlet is invoked and data is persisted"
-		local.get()
-		
-		when: "the datastore is queried for data"
-		def query = new Query("person")
-		query.addFilter("firstname", Query.FilterOperator.EQUAL, "Marco")
-		def preparedQuery = datastore.prepare(query)
-		def entities = preparedQuery.asList( withLimit(1) )
-		
-		then: "the persisted data is found in the datastore"
-		def person = entities[0]
-		person.firstname == 'Marco'
-		person.lastname == 'Vermeulen'
-		person.age == 40
-	}
-	
 	def "the memcache service is present in the groovlet binding"(){
 		given: "the initialised groovlet"
 		
@@ -62,9 +30,9 @@ class LocalServicesBound extends GaelykUnitSpec {
 		expect: "the data to be present in the cache"
 		memcache.contains 'person'
 		def person = memcache.get('person')
-		person.firstname == 'Marco'
-		person.lastname == 'Vermeulen'
-		person.age == 40
+		person.firstname == local.person.firstname
+		person.lastname == local.person.lastname
+		person.age == local.person.age
 	}
 	
 	def "the mail service is present in the groovlet binding"(){
