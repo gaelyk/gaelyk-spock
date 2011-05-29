@@ -5,6 +5,7 @@ import com.google.appengine.api.mail.*
 import com.google.appengine.api.memcache.*
 import com.google.appengine.api.urlfetch.*
 import com.google.appengine.api.users.*
+import com.google.appengine.api.taskqueue.*
 import com.google.appengine.tools.development.testing.*
 import groovyx.gaelyk.*
 import javax.servlet.ServletOutputStream
@@ -21,6 +22,8 @@ class GaelykUnitSpec extends spock.lang.Specification {
 	def images
 	def users
 	def user
+	def defaultQueue
+	def queues
 	
 	def setup(){
 		helper = new LocalServiceTestHelper(
@@ -28,7 +31,8 @@ class GaelykUnitSpec extends spock.lang.Specification {
 			new LocalMemcacheServiceTestConfig(),
 			new LocalMailServiceTestConfig(),
 			new LocalImagesServiceTestConfig(),
-			new LocalUserServiceTestConfig()
+			new LocalUserServiceTestConfig(),
+			new LocalTaskQueueTestConfig()
 		)
 		helper.setUp()
 		
@@ -43,6 +47,8 @@ class GaelykUnitSpec extends spock.lang.Specification {
 		images = ImagesServiceWrapper.instance
 		users = UserServiceFactory.userService
 		user = users.currentUser
+		defaultQueue = QueueFactory.defaultQueue
+		queues = new QueueAccessor()
 	}
 	
 	def teardown(){
@@ -59,6 +65,8 @@ class GaelykUnitSpec extends spock.lang.Specification {
 		groovletInstance.images = images
 		groovletInstance.users = users
 		groovletInstance.user = user
+		groovletInstance.defaultQueue = defaultQueue
+		groovletInstance.queues = queues
 		this.metaClass."${it.tokenize('.').first()}" = groovletInstance
 	}
 		
