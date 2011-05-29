@@ -7,7 +7,7 @@ import static com.google.appengine.api.datastore.FetchOptions.Builder.*
 class DataStoreServiceSpec extends GaelykUnitSpec {
 
 	def setup(){
-		groovlet 'dataStoreTest.groovy'
+		groovlet 'dataStoreGroovlet.groovy'
 	}
 
 	def "the datastore is present in the spec fixture"(){
@@ -22,13 +22,13 @@ class DataStoreServiceSpec extends GaelykUnitSpec {
 		given: "the initialised groovlet"
 		
 		expect: "the datastore in the binding"
-		dataStoreTest.datastore != null
-		dataStoreTest.datastore instanceof com.google.appengine.api.datastore.DatastoreService
+		dataStoreGroovlet.datastore != null
+		dataStoreGroovlet.datastore instanceof com.google.appengine.api.datastore.DatastoreService
 	}
 	
 	def "the datastore is used from within the groovlet"(){
 		given: "the initialised groovlet is invoked and data is persisted"
-		dataStoreTest.get()
+		dataStoreGroovlet.get()
 		
 		when: "the datastore is queried for data"
 		def query = new Query("person")

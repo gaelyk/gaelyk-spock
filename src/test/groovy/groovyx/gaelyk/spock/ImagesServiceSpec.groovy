@@ -9,25 +9,25 @@ class ImagesServiceSpec extends GaelykUnitSpec {
 	ServletOutputStream sos = Mock()
 	
 	def setup(){
-		groovlet 'imagesTest.groovy'
-		imagesTest.sout = sos
+		groovlet 'imagesGroovlet.groovy'
+		imagesGroovlet.sout = sos
 	}
 	
 	def "the images service is present in the groovlet binding"(){
 		expect: "the mail service in the binding"
-		imagesTest.images != null
-		imagesTest.images instanceof com.google.appengine.api.images.ImagesService
+		imagesGroovlet.images != null
+		imagesGroovlet.images instanceof com.google.appengine.api.images.ImagesService
 	}
 	
 	def "apply a transform on an image"(){
 		given:
-		imagesTest.params.path = 'war/WEB-INF/images/image.png'
+		imagesGroovlet.params.path = 'war/WEB-INF/images/image.png'
 		
 		when:
-		imagesTest.get()
+		imagesGroovlet.get()
 		
 		then:
-		1 * imagesTest.sout.write(_)
+		1 * imagesGroovlet.sout.write(_)
 	}
 	
 	

@@ -10,16 +10,16 @@ class UrlFetchServiceSpec extends GaelykUnitSpec {
 	def url = 'http://gaelyk.appspot.com'
 
 	def setup(){
-		groovlet 'urlFetchTest.groovy'
-		urlFetchTest.params.url = url
+		groovlet 'urlFetchGroovlet.groovy'
+		urlFetchGroovlet.params.url = url
 	}
 	
 	def "the url fetch service is present in the groovlet binding"(){
 		given: "the initialised groovlet"
 		
 		expect: "the urlfetch service is in the binding"
-		urlFetchTest.urlFetch != null
-		urlFetchTest.urlFetch instanceof com.google.appengine.api.urlfetch.URLFetchService
+		urlFetchGroovlet.urlFetch != null
+		urlFetchGroovlet.urlFetch instanceof com.google.appengine.api.urlfetch.URLFetchService
 	}
 	
 	def "the url fetch service is used from within the groovlet"(){
@@ -27,10 +27,10 @@ class UrlFetchServiceSpec extends GaelykUnitSpec {
 		def response = Mock(HTTPResponse)
 		
 		when: "the groovlet is invoked"
-		urlFetchTest.get()
+		urlFetchGroovlet.get()
 		
 		then: "the url service should return a valid response"
 		urlFetch.fetch(new URL(url)) >> response
-		urlFetchTest.request.result == response
+		urlFetchGroovlet.request.result == response
 	}
 }
