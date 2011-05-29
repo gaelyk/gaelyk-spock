@@ -1,6 +1,5 @@
 package groovyx.gaelyk.spock
 
-import java.io.OutputStream
 import javax.servlet.ServletOutputStream
 
 class ImagesServiceSpec extends GaelykUnitSpec {

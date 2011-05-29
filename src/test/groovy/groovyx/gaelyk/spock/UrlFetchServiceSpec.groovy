@@ -1,9 +1,6 @@
 package groovyx.gaelyk.spock
 
-import com.google.appengine.api.datastore.*
-import com.google.appengine.tools.development.*
 import com.google.appengine.api.urlfetch.*
-import static com.google.appengine.api.datastore.FetchOptions.Builder.*
 
 class UrlFetchServiceSpec extends GaelykUnitSpec {
 
