@@ -6,16 +6,16 @@ class QueueSpec extends GaelykUnitSpec {
 		groovlet 'queuesGroovlet.groovy'
 	}
 	
-	def "default queue is available in spec"(){
+	def "default queue is available in the groovlet"(){
 		expect:
-		defaultQueue != null
-		defaultQueue instanceof com.google.appengine.api.taskqueue.Queue
+		queuesGroovlet.defaultQueue != null
+		queuesGroovlet.defaultQueue instanceof com.google.appengine.api.taskqueue.Queue
 	}
 	
-	def "queue accessor is available in spec"(){
+	def "queue accessor is available in the groovlet"(){
 		expect:
-		queues != null
-		queues instanceof groovyx.gaelyk.QueueAccessor
+		queuesGroovlet.queues != null
+		queuesGroovlet.queues instanceof groovyx.gaelyk.QueueAccessor
 	}
 	
 	def "default queue is accessed from withing groovlet"(){
