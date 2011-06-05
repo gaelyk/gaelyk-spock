@@ -1,5 +1,6 @@
 package groovyx.gaelyk.spock
 
+import com.google.appengine.api.blobstore.*
 import com.google.appengine.api.datastore.*
 import com.google.appengine.api.mail.*
 import com.google.appengine.api.memcache.*
@@ -26,6 +27,7 @@ class GaelykUnitSpec extends spock.lang.Specification {
 	def defaultQueue
 	def queues
 	def xmpp
+	def blobstore
 	
 	def setup(){
 		helper = new LocalServiceTestHelper(
@@ -35,7 +37,8 @@ class GaelykUnitSpec extends spock.lang.Specification {
 			new LocalImagesServiceTestConfig(),
 			new LocalUserServiceTestConfig(),
 			new LocalTaskQueueTestConfig(),
-			new LocalXMPPServiceTestConfig()
+			new LocalXMPPServiceTestConfig(),
+			new LocalBlobstoreServiceTestConfig()
 		)
 		helper.setUp()
 		
@@ -53,6 +56,7 @@ class GaelykUnitSpec extends spock.lang.Specification {
 		defaultQueue = QueueFactory.defaultQueue
 		queues = new QueueAccessor()
 		xmpp = XMPPServiceFactory.XMPPService
+		blobstore = BlobstoreServiceFactory.blobstoreService
 	}
 	
 	def teardown(){
@@ -72,6 +76,7 @@ class GaelykUnitSpec extends spock.lang.Specification {
 		groovletInstance.defaultQueue = defaultQueue
 		groovletInstance.queues = queues
 		groovletInstance.xmpp = xmpp
+		groovletInstance.blobstore = blobstore
 		this.metaClass."${it.tokenize('.').first()}" = groovletInstance
 	}
 		
