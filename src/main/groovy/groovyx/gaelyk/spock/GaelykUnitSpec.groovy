@@ -19,19 +19,8 @@ class GaelykUnitSpec extends spock.lang.Specification {
 	def groovletInstance
 	def helper
 	def sout
-	def datastore
-	def memcache
-	def mail
-	def urlFetch
-	def images
-	def users
-	def user
-	def defaultQueue
-	def queues
-	def xmpp
-	def blobstore
-	def files
-	def oauth
+	def datastore, memcache, mail, urlFetch, images, users, user
+	def defaultQueue, queues, xmpp, blobstore, files, oauth
 	
 	def setup(){
 		helper = new LocalServiceTestHelper(
