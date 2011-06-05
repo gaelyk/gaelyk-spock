@@ -1,5 +1,6 @@
 package groovyx.gaelyk.spock
 
+import com.google.appengine.api.NamespaceManager
 import com.google.appengine.api.blobstore.*
 import com.google.appengine.api.channel.*
 import com.google.appengine.api.datastore.*
@@ -22,6 +23,7 @@ class GaelykUnitSpec extends spock.lang.Specification {
 	def sout
 	def datastore, memcache, mail, urlFetch, images, users, user
 	def defaultQueue, queues, xmpp, blobstore, files, oauth, channel
+	def namespace
 	
 	def setup(){
 		helper = new LocalServiceTestHelper(
@@ -55,6 +57,7 @@ class GaelykUnitSpec extends spock.lang.Specification {
 		files = FileServiceFactory.fileService
 		oauth = Mock(OAuthService)
 		channel = Mock(ChannelService)
+		namespace = NamespaceManager
 	}
 	
 	def teardown(){
@@ -78,6 +81,7 @@ class GaelykUnitSpec extends spock.lang.Specification {
 		groovletInstance.files = files
 		groovletInstance.oauth = oauth
 		groovletInstance.channel = channel
+		groovletInstance.namespace = namespace
 		this.metaClass."${it.tokenize('.').first()}" = groovletInstance
 	}
 		
