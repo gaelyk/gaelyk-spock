@@ -5,6 +5,7 @@ import com.google.appengine.api.datastore.*
 import com.google.appengine.api.files.*
 import com.google.appengine.api.mail.*
 import com.google.appengine.api.memcache.*
+import com.google.appengine.api.oauth.*
 import com.google.appengine.api.urlfetch.*
 import com.google.appengine.api.users.*
 import com.google.appengine.api.taskqueue.*
@@ -30,6 +31,7 @@ class GaelykUnitSpec extends spock.lang.Specification {
 	def xmpp
 	def blobstore
 	def files
+	def oauth
 	
 	def setup(){
 		helper = new LocalServiceTestHelper(
@@ -61,6 +63,7 @@ class GaelykUnitSpec extends spock.lang.Specification {
 		xmpp = XMPPServiceFactory.XMPPService
 		blobstore = BlobstoreServiceFactory.blobstoreService
 		files = FileServiceFactory.fileService
+		oauth = Mock(OAuthService)
 	}
 	
 	def teardown(){
@@ -82,6 +85,7 @@ class GaelykUnitSpec extends spock.lang.Specification {
 		groovletInstance.xmpp = xmpp
 		groovletInstance.blobstore = blobstore
 		groovletInstance.files = files
+		groovletInstance.oauth = oauth
 		this.metaClass."${it.tokenize('.').first()}" = groovletInstance
 	}
 		
