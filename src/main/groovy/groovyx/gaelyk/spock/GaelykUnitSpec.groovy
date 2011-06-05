@@ -23,7 +23,7 @@ class GaelykUnitSpec extends spock.lang.Specification {
 	def sout
 	def datastore, memcache, mail, urlFetch, images, users, user
 	def defaultQueue, queues, xmpp, blobstore, files, oauth, channel
-	def namespace
+	def namespace, localMode
 	
 	def setup(){
 		helper = new LocalServiceTestHelper(
@@ -58,6 +58,7 @@ class GaelykUnitSpec extends spock.lang.Specification {
 		oauth = Mock(OAuthService)
 		channel = Mock(ChannelService)
 		namespace = NamespaceManager
+		localMode = true
 	}
 	
 	def teardown(){
@@ -82,6 +83,7 @@ class GaelykUnitSpec extends spock.lang.Specification {
 		groovletInstance.oauth = oauth
 		groovletInstance.channel = channel
 		groovletInstance.namespace = namespace
+		groovletInstance.localMode = localMode
 		this.metaClass."${it.tokenize('.').first()}" = groovletInstance
 	}
 		

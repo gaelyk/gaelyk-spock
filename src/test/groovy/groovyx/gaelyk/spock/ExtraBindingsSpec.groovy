@@ -12,4 +12,9 @@ class ExtraBindingsSpec extends GaelykUnitSpec {
 		extraBindingsGroovlet.namespace == com.google.appengine.api.NamespaceManager
 	}
 	
+	def "the localMode variable is found in the groovlet binding"(){
+		expect:
+		extraBindingsGroovlet.localMode == true
+	}
+	
 }

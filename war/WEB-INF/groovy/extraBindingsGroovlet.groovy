@@ -1,1 +1,2 @@
 assert namespace
+assert localMode
