@@ -1,6 +1,7 @@
 package groovyx.gaelyk.spock
 
 import com.google.appengine.api.blobstore.*
+import com.google.appengine.api.channel.*
 import com.google.appengine.api.datastore.*
 import com.google.appengine.api.files.*
 import com.google.appengine.api.mail.*
@@ -20,7 +21,7 @@ class GaelykUnitSpec extends spock.lang.Specification {
 	def helper
 	def sout
 	def datastore, memcache, mail, urlFetch, images, users, user
-	def defaultQueue, queues, xmpp, blobstore, files, oauth
+	def defaultQueue, queues, xmpp, blobstore, files, oauth, channel
 	
 	def setup(){
 		helper = new LocalServiceTestHelper(
@@ -53,6 +54,7 @@ class GaelykUnitSpec extends spock.lang.Specification {
 		blobstore = BlobstoreServiceFactory.blobstoreService
 		files = FileServiceFactory.fileService
 		oauth = Mock(OAuthService)
+		channel = Mock(ChannelService)
 	}
 	
 	def teardown(){
@@ -75,6 +77,7 @@ class GaelykUnitSpec extends spock.lang.Specification {
 		groovletInstance.blobstore = blobstore
 		groovletInstance.files = files
 		groovletInstance.oauth = oauth
+		groovletInstance.channel = channel
 		this.metaClass."${it.tokenize('.').first()}" = groovletInstance
 	}
 		
