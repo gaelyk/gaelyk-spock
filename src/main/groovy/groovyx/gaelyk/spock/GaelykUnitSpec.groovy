@@ -10,6 +10,7 @@ import com.google.appengine.api.memcache.*
 import com.google.appengine.api.oauth.*
 import com.google.appengine.api.urlfetch.*
 import com.google.appengine.api.users.*
+import com.google.appengine.api.utils.SystemProperty
 import com.google.appengine.api.taskqueue.*
 import com.google.appengine.api.xmpp.*
 import com.google.appengine.tools.development.testing.*
@@ -23,9 +24,15 @@ class GaelykUnitSpec extends spock.lang.Specification {
 	def sout
 	def datastore, memcache, mail, urlFetch, images, users, user
 	def defaultQueue, queues, xmpp, blobstore, files, oauth, channel
-	def namespace, localMode
+	def namespace, localMode, app
 	
 	def setup(){
+		//system properties to be set
+		SystemProperty.environment.set("Development")
+		SystemProperty.version.set("0.1")
+		SystemProperty.applicationId.set("1234")
+		SystemProperty.applicationVersion.set("1.0")
+	
 		helper = new LocalServiceTestHelper(
 			new LocalDatastoreServiceTestConfig(),
 			new LocalMemcacheServiceTestConfig(),
@@ -42,11 +49,13 @@ class GaelykUnitSpec extends spock.lang.Specification {
 		Object.mixin GaelykCategory
 		
 		sout = Mock(ServletOutputStream)
+		oauth = Mock(OAuthService)
+		channel = Mock(ChannelService)
+		urlFetch = Mock(URLFetchService)
 		
 		datastore = DatastoreServiceFactory.datastoreService
 		memcache = MemcacheServiceFactory.memcacheService
 		mail = MailServiceFactory.mailService
-		urlFetch = Mock(URLFetchService)
 		images = ImagesServiceWrapper.instance
 		users = UserServiceFactory.userService
 		user = users.currentUser
@@ -55,10 +64,22 @@ class GaelykUnitSpec extends spock.lang.Specification {
 		xmpp = XMPPServiceFactory.XMPPService
 		blobstore = BlobstoreServiceFactory.blobstoreService
 		files = FileServiceFactory.fileService
-		oauth = Mock(OAuthService)
-		channel = Mock(ChannelService)
+
 		namespace = NamespaceManager
-		localMode = true
+		localMode = (SystemProperty.environment.value() == SystemProperty.Environment.Value.Development)
+		
+		app = [
+			env: [
+				name: SystemProperty.environment.value(),
+				version: SystemProperty.version.get(),
+			],
+			gaelyk: [
+				version: '0.7'
+			],
+			id: SystemProperty.applicationId.get(),
+			version: SystemProperty.applicationVersion.get()
+		]
+
 	}
 	
 	def teardown(){
@@ -84,6 +105,7 @@ class GaelykUnitSpec extends spock.lang.Specification {
 		groovletInstance.channel = channel
 		groovletInstance.namespace = namespace
 		groovletInstance.localMode = localMode
+		groovletInstance.app = app
 		this.metaClass."${it.tokenize('.').first()}" = groovletInstance
 	}
 		
