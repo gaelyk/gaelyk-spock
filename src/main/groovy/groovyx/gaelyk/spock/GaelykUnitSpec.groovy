@@ -90,25 +90,11 @@ class GaelykUnitSpec extends spock.lang.Specification {
 		
 	def groovlet = {
 		groovletInstance = new GroovletUnderSpec("$it")
-		groovletInstance.sout = sout
-		groovletInstance.datastore = datastore
-		groovletInstance.memcache = memcache
-		groovletInstance.mail = mail
-		groovletInstance.urlFetch = urlFetch
-		groovletInstance.images = images
-		groovletInstance.users = users
-		groovletInstance.user = user
-		groovletInstance.defaultQueue = defaultQueue
-		groovletInstance.queues = queues
-		groovletInstance.xmpp = xmpp
-		groovletInstance.blobstore = blobstore
-		groovletInstance.files = files
-		groovletInstance.oauth = oauth
-		groovletInstance.channel = channel
-		groovletInstance.capabilities = capabilities
-		groovletInstance.namespace = namespace
-		groovletInstance.localMode = localMode
-		groovletInstance.app = app
+		
+		[ 'sout', 'datastore', 'memcache', 'mail', 'urlFetch', 'images', 'users', 'user', 'defaultQueue', 'queues',
+			'xmpp', 'blobstore', 'files', 'oauth', 'channel', 'capabilities', 'namespace', 'localMode', 'app'
+		].each { groovletInstance."$it" = this."$it" }
+		
 		this.metaClass."${it.tokenize('.').first()}" = groovletInstance
 	}
 		
