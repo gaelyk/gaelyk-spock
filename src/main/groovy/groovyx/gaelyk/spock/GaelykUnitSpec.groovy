@@ -1,6 +1,8 @@
 package groovyx.gaelyk.spock
 
+import com.google.appengine.api.LifecycleManager
 import com.google.appengine.api.NamespaceManager
+import com.google.appengine.api.backends.*
 import com.google.appengine.api.blobstore.*
 import com.google.appengine.api.capabilities.*
 import com.google.appengine.api.channel.*
@@ -25,7 +27,7 @@ class GaelykUnitSpec extends spock.lang.Specification {
 	def sout
 	def datastore, memcache, mail, urlFetch, images, users, user
 	def defaultQueue, queues, xmpp, blobstore, files, oauth, channel
-	def namespace, localMode, app, capabilities
+	def namespace, localMode, app, capabilities, backends, lifecycle
 	
 	def setup(){
 		//system properties to be set
@@ -54,6 +56,7 @@ class GaelykUnitSpec extends spock.lang.Specification {
 		channel = Mock(ChannelService)
 		urlFetch = Mock(URLFetchService)
 		capabilities = Mock(CapabilitiesService)
+		backends = Mock(BackendService)
 		
 		datastore = DatastoreServiceFactory.datastoreService
 		memcache = MemcacheServiceFactory.memcacheService
@@ -66,6 +69,7 @@ class GaelykUnitSpec extends spock.lang.Specification {
 		xmpp = XMPPServiceFactory.XMPPService
 		blobstore = BlobstoreServiceFactory.blobstoreService
 		files = FileServiceFactory.fileService
+		lifecycle = LifecycleManager.instance
 
 		namespace = NamespaceManager
 		localMode = (SystemProperty.environment.value() == SystemProperty.Environment.Value.Development)
@@ -91,8 +95,8 @@ class GaelykUnitSpec extends spock.lang.Specification {
 	def groovlet = {
 		groovletInstance = new GroovletUnderSpec("$it")
 		
-		[ 'sout', 'datastore', 'memcache', 'mail', 'urlFetch', 'images', 'users', 'user', 'defaultQueue', 'queues',
-			'xmpp', 'blobstore', 'files', 'oauth', 'channel', 'capabilities', 'namespace', 'localMode', 'app'
+		[ 'sout', 'datastore', 'memcache', 'mail', 'urlFetch', 'images', 'users', 'user', 'defaultQueue', 'queues', 'xmpp', 
+		  'blobstore', 'files', 'oauth', 'channel', 'capabilities', 'namespace', 'localMode', 'app', 'backends', 'lifecycle'
 		].each { groovletInstance."$it" = this."$it" }
 		
 		this.metaClass."${it.tokenize('.').first()}" = groovletInstance
