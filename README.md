@@ -13,7 +13,7 @@ TODO: integrate with gradle-gae-plugin.
 
 ## Build with AntBuilder
 A build.groovy file can be found in the contrib folder of this project. This file should be copied over into the root of the template project overwriting the existing build.groovy. All dependencies should also be placed in the lib folder along with the jar file found at:
-<http://hashcode.co:9001/job/gaelyk-spock/lastSuccessfulBuild/artifact/build/libs/gaelyk-spock-0.1-SNAPSHOT.jar>
+<http://hashcode.co:9001/job/gaelyk-spock/lastSuccessfulBuild/artifact/build/libs/gaelyk-spock-0.1.jar>
 
 Specs should be placed in the `test/groovy` folder of the project.
 
