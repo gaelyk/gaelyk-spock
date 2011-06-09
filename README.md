@@ -18,14 +18,14 @@ A build.groovy file can be found in the contrib folder of this project. This fil
 Specs should be placed in the `tests/groovy` folder of the project.
 
 The following dependencies should be placed in the lib folder:
--	glaforge:gaelyk:0.7
--	com.google.appengine:appengine-api-1.0-sdk:1.5.0
--	com.google.appengine:appengine-api-labs:1.5.0
--	com.google.appengine:appengine-api-stubs:1.5.0
--	com.google.appengine:appengine-testing:1.5.0
--	javax.servlet:servlet-api:2.5
--	cglib:cglib-nodep:2.2
--	org.objenesis:objenesis:1.2
+ -	glaforge:gaelyk:0.7
+ -	com.google.appengine:appengine-api-1.0-sdk:1.5.0
+ -	com.google.appengine:appengine-api-labs:1.5.0
+ -	com.google.appengine:appengine-api-stubs:1.5.0
+ -	com.google.appengine:appengine-testing:1.5.0
+ -	javax.servlet:servlet-api:2.5
+ -	cglib:cglib-nodep:2.2
+ -	org.objenesis:objenesis:1.2
 
 
 Not that this is a temporary work around until the Gradle build has been put in place.
