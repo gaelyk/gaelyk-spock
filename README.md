@@ -18,6 +18,7 @@ A build.groovy file can be found in the contrib folder of this project. This fil
 Specs should be placed in the `tests/groovy` folder of the project.
 
 The following dependencies should be placed in the lib folder:
+
 1. org.spockframework:spock-core:0.5-groovy-1.8
 2. glaforge:gaelyk:0.7
 3. com.google.appengine:appengine-api-1.0-sdk:1.5.0
