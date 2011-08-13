@@ -33,6 +33,10 @@ class RoutesUnderSpec {
 		mappings."$it" ?: false
 	}
 	
+	def redirect = {
+		println it
+	}
+	
 	def run(){
 		gse.run scriptName, binding
 		logging = this.log.buffer
