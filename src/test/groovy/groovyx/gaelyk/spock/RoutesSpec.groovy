@@ -16,12 +16,20 @@ class RoutesSpec extends GaelykRoutingSpec {
 		routes.run()
 	}
 	
+	def "a get of mappings may be verified"(){
+		when:
+		routes.run()
+		
+		then:
+		get '/about'
+		get '/other'
+	}
+	
 	def "a redirect of a mapping may be configured"(){
 		when:
 		routes.run()
 		
 		then:
-		mapped '/about'
 		redirect '/about' to "/blog/2008/10/20/welcome-to-my-blog"
 	}
 	
@@ -30,7 +38,6 @@ class RoutesSpec extends GaelykRoutingSpec {
 		routes.run()
 		
 		then:
-		mapped '/other'
 		forward '/other' to "/blog/2008/10/20/welcome-to-my-other-blog"
 	}
 	
