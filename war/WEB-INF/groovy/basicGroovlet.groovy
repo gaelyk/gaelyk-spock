@@ -5,6 +5,9 @@ assert params.param2
 //out
 out.write 'hello'
 
+//response
+response.setHeader 'HEADER', 'TEST'
+
 //logging
 log.severe 'severe log'
 log.warning 'warning log'

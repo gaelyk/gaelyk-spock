@@ -69,4 +69,12 @@ class BasicUseCasesCovered extends GaelykUnitSpec {
 		1 * out.write('hello')
 	}
 	
+	def "response is present and accessible"(){
+		when:
+		basicGroovlet.get()
+		
+		then:
+		1 * response.setHeader('HEADER', 'TEST')
+	}
+	
 }
