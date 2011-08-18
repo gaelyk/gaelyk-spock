@@ -8,6 +8,9 @@ out.write 'hello'
 //response
 response.setHeader 'HEADER', 'TEST'
 
+//headers
+headers.ANOTHER = 'test-value'
+
 //logging
 log.severe 'severe log'
 log.warning 'warning log'

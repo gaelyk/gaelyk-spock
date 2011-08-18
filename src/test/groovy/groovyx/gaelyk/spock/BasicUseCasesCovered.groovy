@@ -77,4 +77,12 @@ class BasicUseCasesCovered extends GaelykUnitSpec {
 		1 * response.setHeader('HEADER', 'TEST')
 	}
 	
+	def "add a value directly to implicit headers map"(){
+		when:
+		basicGroovlet.get()
+		
+		then:
+		basicGroovlet.headers.ANOTHER == 'test-value'
+	}
+	
 }

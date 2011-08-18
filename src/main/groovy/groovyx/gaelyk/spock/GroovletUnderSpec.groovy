@@ -24,6 +24,7 @@ class GroovletUnderSpec {
 	
 	def bindVariables = {
 		binding.setVariable 'params', [:]
+		binding.setVariable 'headers', [:]
 		binding.setVariable 'request', [:]
 		binding.setVariable 'forward', { forward = it }
 		binding.setVariable 'redirect', { redirect = it }
