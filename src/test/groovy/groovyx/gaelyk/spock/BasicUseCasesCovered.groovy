@@ -61,4 +61,12 @@ class BasicUseCasesCovered extends GaelykUnitSpec {
 		basicGroovlet.redirect == 'some.groovy'
 	}
 	
+	def "out is available and writeable"(){
+		when:
+		basicGroovlet.get()
+		
+		then:
+		1 * out.write('hello')
+	}
+	
 }

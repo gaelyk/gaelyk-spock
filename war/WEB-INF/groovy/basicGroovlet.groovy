@@ -2,6 +2,9 @@
 assert params.param1
 assert params.param2
 
+//out
+out.write 'hello'
+
 //logging
 log.severe 'severe log'
 log.warning 'warning log'

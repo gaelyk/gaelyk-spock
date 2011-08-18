@@ -18,13 +18,14 @@ import com.google.appengine.api.taskqueue.*
 import com.google.appengine.api.xmpp.*
 import com.google.appengine.tools.development.testing.*
 import groovyx.gaelyk.*
+import java.io.PrintWriter
 import javax.servlet.ServletOutputStream
 
 class GaelykUnitSpec extends spock.lang.Specification {
 	
 	def groovletInstance
 	def helper
-	def sout
+	def sout, out
 	def datastore, memcache, mail, urlFetch, images, users, user
 	def defaultQueue, queues, xmpp, blobstore, files, oauth, channel
 	def namespace, localMode, app, capabilities, backends, lifecycle
@@ -52,6 +53,7 @@ class GaelykUnitSpec extends spock.lang.Specification {
 		Object.mixin GaelykCategory
 		
 		sout = Mock(ServletOutputStream)
+		out = Mock(PrintWriter)
 		oauth = Mock(OAuthService)
 		channel = Mock(ChannelService)
 		urlFetch = Mock(URLFetchService)
@@ -95,7 +97,7 @@ class GaelykUnitSpec extends spock.lang.Specification {
 	def groovlet = {
 		groovletInstance = new GroovletUnderSpec("$it")
 		
-		[ 'sout', 'datastore', 'memcache', 'mail', 'urlFetch', 'images', 'users', 'user', 'defaultQueue', 'queues', 'xmpp', 
+		[ 'sout', 'out', 'datastore', 'memcache', 'mail', 'urlFetch', 'images', 'users', 'user', 'defaultQueue', 'queues', 'xmpp', 
 		  'blobstore', 'files', 'oauth', 'channel', 'capabilities', 'namespace', 'localMode', 'app', 'backends', 'lifecycle'
 		].each { groovletInstance."$it" = this."$it" }
 		
