@@ -30,6 +30,7 @@ class RoutesSpec extends GaelykRoutingSpec {
 		routes.run()
 		
 		then:
+		mapped '/about'
 		redirect '/about' to "/blog/2008/10/20/welcome-to-my-blog"
 	}
 	
@@ -38,6 +39,7 @@ class RoutesSpec extends GaelykRoutingSpec {
 		routes.run()
 		
 		then:
+		mapped '/other'
 		forward '/other' to "/blog/2008/10/20/welcome-to-my-other-blog"
 	}
 	
