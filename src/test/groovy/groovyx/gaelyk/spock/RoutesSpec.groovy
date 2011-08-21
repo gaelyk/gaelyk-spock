@@ -6,41 +6,39 @@ class RoutesSpec extends GaelykRoutingSpec {
 		routing 'routes.groovy'
 	}
 	
-	def "the routing fixtures are in place"(){
+	def "a get method may be routed"(){		
 		expect:
-		routes
-	}
-	
-	def "the routing fixtures may be run"(){
-		expect:
-		routes.run()
-	}
-	
-	def "a get of mappings may be verified"(){
-		when:
-		routes.run()
-		
-		then:
 		get '/about'
-		get '/other'
 	}
 	
+	def "a get method incorrectly routed will fail"(){
+		expect:
+		! get('/aboutz')
+	}
+	
+	
+	def "a post method may be routed"(){
+		expect:
+		post '/other'
+	}
+	
+	def "a post method incorrectly routed will fail"(){
+		expect:
+		! post('/otherz')
+	}
+	
+	/**
 	def "a redirect of a mapping may be configured"(){
-		when:
-		routes.run()
-		
-		then:
-		mapped '/about'
+		expect:
+		get method '/about'
 		redirect '/about' to "/blog/2008/10/20/welcome-to-my-blog"
 	}
 	
 	def "a forward of a mapping may be configured"(){
-		when:
-		routes.run()
-		
-		then:
-		mapped '/other'
+		expect:
+		post method '/other'
 		forward '/other' to "/blog/2008/10/20/welcome-to-my-other-blog"
 	}
+	*/
 	
 }
