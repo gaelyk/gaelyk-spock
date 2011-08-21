@@ -13,7 +13,11 @@ class GaelykRoutingSpec extends spock.lang.Specification {
 	def post = { method(it, "post") }
 	
 	def method = { mapping, method ->
-		(routesUnderSpec.methods["$mapping"] == method) ?: false
+		if(routesUnderSpec.methods["$mapping"] != method){
+			throw new InvalidMappingException("No such mapping found: $mapping")
+		} else {
+			return true
+		}
 	}
 	
 	def key, value
@@ -34,7 +38,7 @@ class GaelykRoutingSpec extends spock.lang.Specification {
 		value = routesUnderSpec.mappings."$mapping"
 		if(!value) throw new InvalidMappingException("No such mapping found: $mapping")
 		this
-	}	
+	}
 	
 }
 	

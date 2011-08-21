@@ -12,8 +12,11 @@ class RoutesSpec extends GaelykRoutingSpec {
 	}
 	
 	def "a get method incorrectly routed will fail"(){
-		expect:
-		! get('/aboutz')
+		when:
+		get '/aboutz'
+		
+		then:
+		thrown(InvalidMappingException)
 	}
 	
 	
@@ -23,8 +26,11 @@ class RoutesSpec extends GaelykRoutingSpec {
 	}
 	
 	def "a post method incorrectly routed will fail"(){
-		expect:
-		! post('/otherz')
+		when:
+		post '/otherz'
+		
+		then:
+		thrown(InvalidMappingException)
 	}
 	
 	/**
