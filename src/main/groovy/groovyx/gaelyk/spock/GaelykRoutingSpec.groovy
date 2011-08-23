@@ -9,11 +9,11 @@ class GaelykRoutingSpec extends spock.lang.Specification {
 		this.metaClass."${scriptFile.tokenize('.').first()}" = routesUnderSpec
 	}
 	
-	def get = { method(it, "get") }
-	def post = { method(it, "post") }
+	def get = { verb(it, "get") }
+	def post = { verb(it, "post") }
 	
-	def method = { mapping, method ->
-		if(routesUnderSpec.methods["$mapping"] != method){
+	def verb = { mapping, signature ->
+		if(routesUnderSpec.methods."$mapping" != signature){
 			throw new InvalidMappingException("No such mapping found: $mapping")
 		} else {
 			return true
