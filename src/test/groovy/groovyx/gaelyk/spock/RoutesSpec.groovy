@@ -33,18 +33,13 @@ class RoutesSpec extends GaelykRoutingSpec {
 		thrown(InvalidMappingException)
 	}
 	
-	/**
 	def "a redirect of a mapping may be configured"(){
 		expect:
-		get method '/about'
 		redirect '/about' to "/blog/2008/10/20/welcome-to-my-blog"
 	}
 	
 	def "a forward of a mapping may be configured"(){
 		expect:
-		post method '/other'
 		forward '/other' to "/blog/2008/10/20/welcome-to-my-other-blog"
-	}
-	*/
-	
+	}	
 }
