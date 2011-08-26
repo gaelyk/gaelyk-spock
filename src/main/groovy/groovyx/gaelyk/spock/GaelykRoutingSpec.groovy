@@ -11,6 +11,11 @@ class GaelykRoutingSpec extends spock.lang.Specification {
 	
 	def get = { verb(it, "get") }
 	def post = { verb(it, "post") }
+	def put = { verb(it, "put") }
+	def delete = { verb(it, "delete") }
+	def all = { verb(it, "all") }
+	def email = { verb(it, "email") }
+	def jabber = { verb(it, "jabber") }
 	
 	def verb = { mapping, signature ->
 		if(routesUnderSpec.methods."$mapping" != signature){

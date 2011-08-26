@@ -25,7 +25,15 @@ class RoutesUnderSpec {
 	def bindVariables = {
 		binding.setVariable 'get', get
 		binding.setVariable 'post', post
+		binding.setVariable 'delete', delete
+		binding.setVariable 'put', put
+		binding.setVariable 'all', all
 		binding.setVariable 'log', log
+		binding.setVariable 'email', email
+		binding.setVariable 'jabber', jabber
+		binding.setVariable 'chat', chat
+		binding.setVariable 'subscribe', subscribe
+		binding.setVariable 'presence', presence
 	}
 	
 	def run(){
@@ -44,6 +52,33 @@ class RoutesUnderSpec {
 		mappings.put mapping, directive
 		methods.put mapping, "post"
 	}
+	
+	def put = { directive, mapping ->
+		mappings.put mapping, directive
+		methods.put mapping, "put"
+	}
+	
+	def delete = { directive, mapping ->
+		mappings.put mapping, directive
+		methods.put mapping, "delete"
+	}
+	
+	def all = { directive, mapping ->
+		mappings.put mapping, directive
+		methods.put mapping, "all"
+	}
+	
+	def email = { destination ->
+		methods.put destination.to, "email"
+	}
+	
+	def jabber = { destination, command='nothing' ->
+		methods.put destination.to, "jabber"
+	}
+	
+	def chat = 'chat'
+	def subscribe = 'subscribe'
+	def presence = 'presence'
 	
 	def mapped = {
 		mappings."$it" ?: false
