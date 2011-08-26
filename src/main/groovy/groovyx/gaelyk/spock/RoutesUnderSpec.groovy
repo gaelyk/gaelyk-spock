@@ -72,8 +72,8 @@ class RoutesUnderSpec {
 		methods.put destination.to, "email"
 	}
 	
-	def jabber = { destination, command='nothing' ->
-		methods.put destination.to, "jabber"
+	def jabber = { destination, command="jabber" ->
+		methods.put destination.to, command
 	}
 	
 	def chat = 'chat'

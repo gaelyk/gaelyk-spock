@@ -76,8 +76,8 @@ class RoutesSpec extends GaelykRoutingSpec {
 	
 	def "jabber routing rules for user presence, subscribe and chat"(){
 		expect:
-		jabber 'presenceJabber.groovy'
-		jabber 'subscribeJabber.groovy'
-		jabber 'chatJabber.groovy'
+		jabber presence, '/presenceJabber.groovy'
+		jabber subscribe, '/subscribeJabber.groovy'
+		jabber chat, '/chatJabber.groovy'
 	}
 }
