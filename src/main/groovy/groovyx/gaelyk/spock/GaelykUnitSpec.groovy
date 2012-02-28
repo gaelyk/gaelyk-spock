@@ -84,7 +84,7 @@ class GaelykUnitSpec extends spock.lang.Specification {
 				version: SystemProperty.version.get(),
 			],
 			gaelyk: [
-				version: '0.7'
+				version: '1.1'
 			],
 			id: SystemProperty.applicationId.get(),
 			version: SystemProperty.applicationVersion.get()
@@ -92,18 +92,25 @@ class GaelykUnitSpec extends spock.lang.Specification {
 
 	}
 	
-	def teardown(){
+	def cleanup(){
 		helper.tearDown()
 	}
+	
+	def getGroovletsDir(){
+		'war/WEB-INF/groovy'
+	}
+	
+	GroovletUnderSpec getGin(){
+		groovletInstance
+	}
 		
-	def groovlet = {
-		groovletInstance = new GroovletUnderSpec("$it")
+	def groovlet = { it, dir = groovletsDir ->
+		groovletInstance = new GroovletUnderSpec("$it", dir)
 		
 		[ 'sout', 'out', 'response', 'datastore', 'memcache', 'mail', 'urlFetch', 'images', 'users', 'user', 'defaultQueue', 'queues', 'xmpp', 
 		  'blobstore', 'files', 'oauth', 'channel', 'capabilities', 'namespace', 'localMode', 'app', 'backends', 'lifecycle'
 		].each { groovletInstance."$it" = this."$it" }
-		
-		this.metaClass."${it.tokenize('.').first()}" = groovletInstance
+		this.metaClass."${it.tokenize('.').first().tokenize('/').last()}" = groovletInstance
 	}
 		
 }
