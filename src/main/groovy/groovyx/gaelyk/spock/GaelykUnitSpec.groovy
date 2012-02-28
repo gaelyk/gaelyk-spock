@@ -22,6 +22,9 @@ import java.io.PrintWriter
 import javax.servlet.ServletOutputStream
 import javax.servlet.http.HttpServletResponse
 
+import spock.util.mop.Use;
+
+@Use(GaelykCategory)
 class GaelykUnitSpec extends spock.lang.Specification {
 	
 	def groovletInstance
@@ -49,9 +52,8 @@ class GaelykUnitSpec extends spock.lang.Specification {
 			new LocalBlobstoreServiceTestConfig(),
 			new LocalFileServiceTestConfig()
 		)
+		customizeHelper(helper)
 		helper.setUp()
-		
-		Object.mixin GaelykCategory
 		
 		sout = Mock(ServletOutputStream)
 		out = Mock(PrintWriter)
@@ -96,13 +98,15 @@ class GaelykUnitSpec extends spock.lang.Specification {
 		helper.tearDown()
 	}
 	
-	def getGroovletsDir(){
+	String getGroovletsDir(){
 		'war/WEB-INF/groovy'
 	}
 	
 	GroovletUnderSpec getGin(){
 		groovletInstance
 	}
+	
+	void customizeHelper(LocalServiceTestHelper helper){}
 		
 	def groovlet = { it, dir = groovletsDir ->
 		groovletInstance = new GroovletUnderSpec("$it", dir)
