@@ -2,7 +2,7 @@ package groovyx.gaelyk.spock
 
 class RoutesUnderSpec {
 	
-	def gse = new GroovyScriptEngine("war/WEB-INF")
+	def gse = new GroovyScriptEngine("src/main/webapp/WEB-INF")
 	def binding = new Binding()
 	def log = new GroovletMockLogger(level:'info')
 	def scriptName
@@ -14,8 +14,8 @@ class RoutesUnderSpec {
 		if(!scriptName){
 			scriptName = 'routes.groovy'
 		}
-		if(! new File("war/WEB-INF/$scriptName").exists()){
-			throw new IllegalArgumentException("$scriptName not found. No such file in war/WEB-INF?")
+		if(! new File("src/main/webapp/WEB-INF/$scriptName").exists()){
+			throw new IllegalArgumentException("$scriptName not found. No such file in src/main/webapp/WEB-INF?")
 		}
 		this.scriptName = scriptName
 		bindVariables()

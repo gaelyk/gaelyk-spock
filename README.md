@@ -35,7 +35,7 @@ Not that this is a temporary work around until the Gradle build has been put in 
 
 To write Spock Specs against an existing groovlet, you would need to create a new Specification that extends `groovyx.gaelyk.spock.GaelykUnitSpec`.
 
-All classes extending this class have a simple DSL that declares the groovlet in the setup method using the line `groovlet 'xxxxx.groovy'`. This will automatically look for the `xxxxx.groovy` groovlet under `war/WEB-INF/groovy` of your template project. From this point on the `xxxxx` groovlet is now available as an instance variable in this Spec. You can now call methods on it such as xxxxx.get(). All other services and bindings are also available to this Spec implicitly.
+All classes extending this class have a simple DSL that declares the groovlet in the setup method using the line `groovlet 'xxxxx.groovy'`. This will automatically look for the `xxxxx.groovy` groovlet under `src/main/webapp/WEB-INF/groovy` of your template project. From this point on the `xxxxx` groovlet is now available as an instance variable in this Spec. You can now call methods on it such as xxxxx.get(). All other services and bindings are also available to this Spec implicitly.
 
 Consider the follwing code example that sets up the dataStoreGroovlet as fixture, then invokes and finally queries the datastore service (which is a GAE Local Service) for side effects of the groovlet invocation.
 
@@ -64,7 +64,7 @@ Consider the follwing code example that sets up the dataStoreGroovlet as fixture
 
 ## Example Code
 
-Comprehensive examples of how to use GaelykUnitSpec with groovlets can be found in the `src/test/groovy` folder of this project. The groovlets under specification can be found under `war/WEB-INF/groovy`.
+Comprehensive examples of how to use GaelykUnitSpec with groovlets can be found in the `src/test/groovy` folder of this project. The groovlets under specification can be found under `src/main/webapp/WEB-INF/groovy`.
 
 These examples cover all the possible services and bindings that groovlets running under Gaelyk have to offer. Stubbed Local Services provided by the Google App Engine SDK have been used where possible, with Spock Mocks covering all exceptional cases (`sout`, `oauth`, `channel`, `urlFetch`, `capabilities` and `backends`).
 

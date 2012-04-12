@@ -20,7 +20,7 @@ class ImagesServiceSpec extends GaelykUnitSpec {
 	
 	def "apply a transform on an image"(){
 		given:
-		imagesGroovlet.params.path = 'war/WEB-INF/images/image.png'
+		imagesGroovlet.params.path = 'src/main/webapp/WEB-INF/images/image.png'
 		
 		when:
 		imagesGroovlet.get()

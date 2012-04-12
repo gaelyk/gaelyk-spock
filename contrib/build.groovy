@@ -3,7 +3,7 @@ new AntBuilder().sequential {
 	//setup
 	source = "src"
 	
-	webinfDir = "war/WEB-INF"
+	webinfDir = "src/main/webapp/WEB-INF"
 	webinfClasses = "${webinfDir}/classes"
 	webinfLib = "${webinfDir}/lib"
 	
