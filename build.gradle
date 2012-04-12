@@ -3,7 +3,7 @@ import org.apache.ivy.plugins.resolver.URLResolver
 apply plugin: "groovy"
 apply plugin: "eclipse"
 archivesBaseName = "gaelyk-spock"
-version = "0.2"
+version = "0.3"
 
 buildscript {
 	gitHub = {
@@ -22,12 +22,12 @@ repositories {
 }
 
 dependencies {
-	def gaeVersion = "1.5.2"
-	groovy "org.codehaus.groovy:groovy:1.8.1"
-	compile "org.spockframework:spock-core:0.5-groovy-1.8", {
+	def gaeVersion = "1.6.4.1"
+	groovy "org.codehaus.groovy:groovy:1.8.6"
+	compile "org.spockframework:spock-core:0.6-groovy-1.8", {
 		exclude group: "org.codehaus.groovy", module: "groovy-all"
 	}
-	compile "glaforge:gaelyk:0.7"
+	compile "glaforge:gaelyk:1.1"
 	compile "com.google.appengine:appengine-api-1.0-sdk:${gaeVersion}"
 	compile "com.google.appengine:appengine-api-labs:${gaeVersion}"
 	compile "com.google.appengine:appengine-api-stubs:${gaeVersion}"
