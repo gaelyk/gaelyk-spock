@@ -5,7 +5,7 @@ apply plugin: "eclipse"
 apply plugin: "maven"
 
 archivesBaseName = "gaelyk-spock"
-version = "0.3"
+version = "0.3-SNAPSHOT"
 group = 'marcoVermeulen'
 
 buildscript {
@@ -30,7 +30,7 @@ dependencies {
 	compile "org.spockframework:spock-core:0.6-groovy-1.8", {
 		exclude group: "org.codehaus.groovy", module: "groovy-all"
 	}
-	compile "org.gaelyk:gaelyk:1.1"
+	compile "glaforge:gaelyk:1.2-SNAPSHOT"
 	compile "com.google.appengine:appengine-api-1.0-sdk:${gaeVersion}"
 	compile "com.google.appengine:appengine-api-labs:${gaeVersion}"
 	compile "com.google.appengine:appengine-api-stubs:${gaeVersion}"
