@@ -24,7 +24,7 @@ class ExtraBindingsSpec extends GaelykUnitSpec {
 		extraBindingsGroovlet.app
 		extraBindingsGroovlet.app.env.name == SystemProperty.Environment.Value.Development
 		extraBindingsGroovlet.app.env.version == "0.1"
-		extraBindingsGroovlet.app.gaelyk.version == "0.7"
+		extraBindingsGroovlet.app.gaelyk.version == "1.1"
 		extraBindingsGroovlet.app.id == "1234"
 		extraBindingsGroovlet.app.version == "1.0"
 	}

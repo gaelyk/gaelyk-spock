@@ -1,8 +1,7 @@
 package groovyx.gaelyk.spock
 
 class GroovletUnderSpec {
-	
-	def gse = new GroovyScriptEngine("war/WEB-INF/groovy")
+	def gse
 	def binding = new Binding()
 	def log = new GroovletMockLogger(level:'info')
 	def scriptName
@@ -11,12 +10,13 @@ class GroovletUnderSpec {
 	def redirect = ''
 	def logging = ''
 		
-	GroovletUnderSpec(scriptName){
+	GroovletUnderSpec(scriptName, String scriptDir = 'war/WEB-INF/groovy'){
+		gse = new GroovyScriptEngine("$scriptDir")
 		if(!scriptName){
 			throw new IllegalStateException('The scriptName was not defined in setup()')
 		}
-		if(! new File("war/WEB-INF/groovy/$scriptName").exists()){
-			throw new IllegalArgumentException("$scriptName not found. No such file in war/WEB-INF/groovy ?")
+		if(! new File("$scriptDir/$scriptName").exists()){
+			throw new IllegalArgumentException("$scriptName not found. No such file in $scriptDir?")
 		}
 		this.scriptName = scriptName
 		bindVariables()
@@ -36,6 +36,14 @@ class GroovletUnderSpec {
 	}
 	
 	void post(){
+		run()
+	}
+	
+	void put(){
+		run()
+	}
+	
+	void delete(){
 		run()
 	}
 	
