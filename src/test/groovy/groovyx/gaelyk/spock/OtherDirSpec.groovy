@@ -2,7 +2,7 @@ package groovyx.gaelyk.spock
 
 class OtherDirSpec extends GaelykUnitSpec {
 
-	def groovletsDir = 'war/WEB-INF/groovy/pkg'
+	def groovletsDir = 'src/main/webapp/WEB-INF/groovy/pkg'
 	
 	def setup(){
 		groovlet 'inPkg.groovy'

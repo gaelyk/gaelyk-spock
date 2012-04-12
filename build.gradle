@@ -13,7 +13,7 @@ buildscript {
 			addArtifactPattern "http://cloud.github.com/downloads/[organisation]/[module]/[module]-[revision].[ext]"
 		}
 		resolver
-	}	
+	}
 }
 
 repositories {
@@ -25,7 +25,7 @@ dependencies {
 	def gaeVersion = "1.5.2"
 	groovy "org.codehaus.groovy:groovy:1.8.1"
 	compile "org.spockframework:spock-core:0.5-groovy-1.8", {
-		exclude group: "org.codehaus.groovy", name: "groovy-all"
+		exclude group: "org.codehaus.groovy", module: "groovy-all"
 	}
 	compile "glaforge:gaelyk:0.7"
 	compile "com.google.appengine:appengine-api-1.0-sdk:${gaeVersion}"
@@ -36,3 +36,4 @@ dependencies {
 	compile "cglib:cglib-nodep:2.2"
 	compile "org.objenesis:objenesis:1.2"
 }
+

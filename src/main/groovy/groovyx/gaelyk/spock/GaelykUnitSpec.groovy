@@ -99,7 +99,7 @@ class GaelykUnitSpec extends spock.lang.Specification {
 	}
 	
 	String getGroovletsDir(){
-		'war/WEB-INF/groovy'
+		'src/main/webapp/WEB-INF/groovy'
 	}
 	
 	GroovletUnderSpec getGin(){

@@ -10,7 +10,7 @@ class GroovletUnderSpec {
 	def redirect = ''
 	def logging = ''
 		
-	GroovletUnderSpec(scriptName, String scriptDir = 'war/WEB-INF/groovy'){
+	GroovletUnderSpec(scriptName, String scriptDir = 'src/main/webapp/WEB-INF/groovy'){
 		gse = new GroovyScriptEngine("$scriptDir")
 		if(!scriptName){
 			throw new IllegalStateException('The scriptName was not defined in setup()')
