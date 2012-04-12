@@ -22,6 +22,9 @@ import java.io.PrintWriter
 import javax.servlet.ServletOutputStream
 import javax.servlet.http.HttpServletResponse
 
+import spock.util.mop.Use;
+
+@Use(GaelykCategory)
 class GaelykUnitSpec extends spock.lang.Specification {
 	
 	def groovletInstance
@@ -49,9 +52,8 @@ class GaelykUnitSpec extends spock.lang.Specification {
 			new LocalBlobstoreServiceTestConfig(),
 			new LocalFileServiceTestConfig()
 		)
+		customizeHelper(helper)
 		helper.setUp()
-		
-		Object.mixin GaelykCategory
 		
 		sout = Mock(ServletOutputStream)
 		out = Mock(PrintWriter)
@@ -84,7 +86,7 @@ class GaelykUnitSpec extends spock.lang.Specification {
 				version: SystemProperty.version.get(),
 			],
 			gaelyk: [
-				version: '0.7'
+				version: '1.1'
 			],
 			id: SystemProperty.applicationId.get(),
 			version: SystemProperty.applicationVersion.get()
@@ -92,18 +94,27 @@ class GaelykUnitSpec extends spock.lang.Specification {
 
 	}
 	
-	def teardown(){
+	def cleanup(){
 		helper.tearDown()
 	}
+	
+	String getGroovletsDir(){
+		'war/WEB-INF/groovy'
+	}
+	
+	GroovletUnderSpec getGin(){
+		groovletInstance
+	}
+	
+	void customizeHelper(LocalServiceTestHelper helper){}
 		
-	def groovlet = {
-		groovletInstance = new GroovletUnderSpec("$it")
+	def groovlet = { it, dir = groovletsDir ->
+		groovletInstance = new GroovletUnderSpec("$it", dir)
 		
 		[ 'sout', 'out', 'response', 'datastore', 'memcache', 'mail', 'urlFetch', 'images', 'users', 'user', 'defaultQueue', 'queues', 'xmpp', 
 		  'blobstore', 'files', 'oauth', 'channel', 'capabilities', 'namespace', 'localMode', 'app', 'backends', 'lifecycle'
 		].each { groovletInstance."$it" = this."$it" }
-		
-		this.metaClass."${it.tokenize('.').first()}" = groovletInstance
+		this.metaClass."${it.tokenize('.').first().tokenize('/').last()}" = groovletInstance
 	}
 		
 }
