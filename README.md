@@ -40,7 +40,7 @@ Consider the follwing code example that sets up the dataStoreGroovlet as fixture
 
 ## Example Code
 
-Comprehensive examples of how to use GaelykUnitSpec with groovlets can be found in the `src/test/groovy` folder of this project. The groovlets under specification can be found under `war/WEB-INF/groovy`.
+Comprehensive examples of how to use GaelykUnitSpec with groovlets can be found in the `src/test/groovy` folder of this project. The groovlets under specification can be found under `src/main/webapp/WEB-INF/groovy`.
 
 These examples cover all the possible services and bindings that groovlets running under Gaelyk have to offer. Stubbed Local Services provided by the Google App Engine SDK have been used where possible, with Spock Mocks covering all exceptional cases (`sout`, `oauth`, `channel`, `urlFetch`, `capabilities` and `backends`).
 
