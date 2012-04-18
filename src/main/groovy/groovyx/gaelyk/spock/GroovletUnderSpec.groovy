@@ -1,6 +1,7 @@
 package groovyx.gaelyk.spock
 
 class GroovletUnderSpec {
+	
 	def gse
 	def binding = new Binding()
 	def log = new GroovletMockLogger(level:'info')
