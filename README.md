@@ -7,9 +7,6 @@ The gaelyk-spock project seeks to bring Spock to the world of Gaelyk. It allows 
 
 This may be achieved by one of the following:
 
-## Build with Gradle
-A build.gradle file is present in the contrib folder of the project. This may be copied over into the root of a template project. All specs should be placed into `src/test/groovy` under an appropriate package structure, with resources in `src/test/resources`. Simply run `gradle test` from the root of the project to run your Spock specification against your Groovlets.
-
 ## Getting Started
 
 To write Spock Specs against an existing groovlet, you would need to create a new Specification that extends `groovyx.gaelyk.spock.GaelykUnitSpec`.
@@ -60,6 +57,11 @@ With Continuous Integration at:
   * Upgraded Spock to 0.6
   * New [ConventionalGaelykUnitTest](https://github.com/musketyr/gaelyk-spock/blob/master/src/main/groovy/groovyx/gaelyk/spock/ConventionalGaelykUnitSpec.groovy) with automatic groovlet name determination
   * Ability to specify Groovlets' directory (which is now default to `src/main/webapp/WEB-INF/groovy` instead of `war/WEB-INF/groovy` to reflex changes in Gaelyk 1.2
+
+
+## Build with Gradle
+A build.gradle file is present in the contrib folder of the project. This may be copied over into the root of a template project. All specs should be placed into `src/test/groovy` under an appropriate package structure, with resources in `src/test/resources`. Simply run `gradle test` from the root of the project to run your Spock specification against your Groovlets.
+
 
 ## Build with AntBuilder
 A build.groovy file can be found in the contrib folder of this project. This file should be copied over into the root of the template project overwriting the existing build.groovy. All dependencies should also be placed in the lib folder along with the jar file found at:
