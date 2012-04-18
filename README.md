@@ -72,5 +72,13 @@ These examples cover all the possible services and bindings that groovlets runni
 This can be found at:
     <https://github.com/marcoVermeulen/gaelyk-spock>
 With Continuous Integration at:
-	<http://hashcode.co:9001/job/gaelyk-spock/>	
+	<http://hashcode.co:9001/job/gaelyk-spock/>
+	
+## Release Notes
+
+### 0.3
+
+  * Upgraded Spock to 0.6
+  * New [ConventionalGaelykUnitTest](https://github.com/musketyr/gaelyk-spock/blob/master/src/main/groovy/groovyx/gaelyk/spock/ConventionalGaelykUnitSpec.groovy) with automatic groovlet name determination
+  * Ability to specify Groovlets' directory (which is now default to `src/main/webapp/WEB-INF/groovy` instead of `war/WEB-INF/groovy` to reflex changes in Gaelyk 1.2
 	
