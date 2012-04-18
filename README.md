@@ -10,32 +10,11 @@ This may be achieved by one of the following:
 ## Build with Gradle
 A build.gradle file is present in the contrib folder of the project. This may be copied over into the root of a template project. All specs should be placed into `src/test/groovy` under an appropriate package structure, with resources in `src/test/resources`. Simply run `gradle test` from the root of the project to run your Spock specification against your Groovlets.
 
-## Build with AntBuilder
-A build.groovy file can be found in the contrib folder of this project. This file should be copied over into the root of the template project overwriting the existing build.groovy. All dependencies should also be placed in the lib folder along with the jar file found at:
-<http://hashcode.co:9001/job/gaelyk-spock/lastSuccessfulBuild/artifact/build/libs/gaelyk-spock-0.1.jar>
-
-Specs should be placed in the `tests/groovy` folder of the project.
-
-The following dependencies should be placed in the lib folder:
-
-* org.spockframework:spock-core:0.5-groovy-1.8
-* glaforge:gaelyk:0.7
-* com.google.appengine:appengine-api-1.0-sdk:1.5.0
-* com.google.appengine:appengine-api-labs:1.5.0
-* com.google.appengine:appengine-api-stubs:1.5.0
-* com.google.appengine:appengine-testing:1.5.0
-* javax.servlet:servlet-api:2.5
-* cglib:cglib-nodep:2.2
-* org.objenesis:objenesis:1.2
-
-
-Not that this is a temporary work around until the Gradle build has been put in place.
-
 ## Getting Started
 
 To write Spock Specs against an existing groovlet, you would need to create a new Specification that extends `groovyx.gaelyk.spock.GaelykUnitSpec`.
 
-All classes extending this class have a simple DSL that declares the groovlet in the setup method using the line `groovlet 'xxxxx.groovy'`. This will automatically look for the `xxxxx.groovy` groovlet under `war/WEB-INF/groovy` of your template project. From this point on the `xxxxx` groovlet is now available as an instance variable in this Spec. You can now call methods on it such as xxxxx.get(). All other services and bindings are also available to this Spec implicitly.
+All classes extending this class have a simple DSL that declares the groovlet in the setup method using the line `groovlet 'xxxxx.groovy'`. This will automatically look for the `xxxxx.groovy` groovlet under `src/main/webapp/WEB-INF/groovy` of your template project. From this point on the `xxxxx` groovlet is now available as an instance variable in this Spec. You can now call methods on it such as xxxxx.get(). All other services and bindings are also available to this Spec implicitly.
 
 Consider the follwing code example that sets up the dataStoreGroovlet as fixture, then invokes and finally queries the datastore service (which is a GAE Local Service) for side effects of the groovlet invocation.
 
@@ -81,4 +60,24 @@ With Continuous Integration at:
   * Upgraded Spock to 0.6
   * New [ConventionalGaelykUnitTest](https://github.com/musketyr/gaelyk-spock/blob/master/src/main/groovy/groovyx/gaelyk/spock/ConventionalGaelykUnitSpec.groovy) with automatic groovlet name determination
   * Ability to specify Groovlets' directory (which is now default to `src/main/webapp/WEB-INF/groovy` instead of `war/WEB-INF/groovy` to reflex changes in Gaelyk 1.2
-	
+
+## Build with AntBuilder
+A build.groovy file can be found in the contrib folder of this project. This file should be copied over into the root of the template project overwriting the existing build.groovy. All dependencies should also be placed in the lib folder along with the jar file found at:
+<http://hashcode.co:9001/job/gaelyk-spock/lastSuccessfulBuild/artifact/build/libs/gaelyk-spock-0.1.jar>
+
+Specs should be placed in the `tests/groovy` folder of the project.
+
+The following dependencies should be placed in the lib folder:
+
+* org.spockframework:spock-core:0.5-groovy-1.8
+* glaforge:gaelyk:0.7
+* com.google.appengine:appengine-api-1.0-sdk:1.5.0
+* com.google.appengine:appengine-api-labs:1.5.0
+* com.google.appengine:appengine-api-stubs:1.5.0
+* com.google.appengine:appengine-testing:1.5.0
+* javax.servlet:servlet-api:2.5
+* cglib:cglib-nodep:2.2
+* org.objenesis:objenesis:1.2
+
+
+Not that this is a temporary work around until the Gradle build has been put in place.
