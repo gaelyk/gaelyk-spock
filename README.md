@@ -52,6 +52,10 @@ With Continuous Integration at:
 	
 ## Release Notes
 
+### 0.3.0.2
+  
+  * Compiled with Spock 0.7
+
 ### 0.3
 
   * Upgraded Spock to 0.6
