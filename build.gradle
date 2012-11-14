@@ -27,7 +27,7 @@ repositories {
 }
 
 dependencies {
-	def gaeVersion = "1.6.6"
+	def gaeVersion = "1.7.3"
 	groovy "org.codehaus.groovy:groovy:1.8.6"
 	compile "org.spockframework:spock-core:0.7-groovy-1.8", {
 		exclude group: 'org.codehaus.groovy'
