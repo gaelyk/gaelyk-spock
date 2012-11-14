@@ -5,3 +5,5 @@ bin
 .classpath
 .project
 gaelyk-spock.tmproj
+*.iml
+*.ipr
