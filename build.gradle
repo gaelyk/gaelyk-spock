@@ -5,12 +5,25 @@ apply plugin: "eclipse"
 apply plugin: "maven"
 apply plugin: "nexus"
 
+/**
+ * http://evgeny-goldin.com/wiki/Gradle-CodeNarc-plugin
+ */
+ext.codenarcPriority1Violations = 0     // Work
+ext.codenarcPriority2Violations = 227   // in
+ext.codenarcPriority3Violations = 983   // progress ..
+ext.codenarcRuleSetFiles        = [ 'codenarc.groovy' ]
+ext.codenarcSources             = [ 'src/main', 'src/test' ]
+ext.codenarcReportType          = 'xml'
+ext.codenarcReportFile          = 'codenarc.xml'
+apply from: 'https://raw.github.com/evgeny-goldin/gradle-plugins/master/codenarc/CodeNarc.gradle'
+
+
 def compatibilityVersion = 1.6
 sourceCompatibility = compatibilityVersion
 targetCompatibility = compatibilityVersion
 
 archivesBaseName = "gaelyk-spock"
-version = "0.3.0.2"
+version = "0.4-SNAPSHOT"
 group = 'org.gaelyk'
 
 buildscript {
@@ -86,4 +99,9 @@ modifyPom {
 
 task wrapper(type: Wrapper) {
     gradleVersion = '1.2'
+}
+
+boolean skipSigningVal = !hasProperty('skipSigning') || skipSigning != 'true'
+nexus {
+    sign = skipSigningVal
 }
