@@ -2,8 +2,6 @@ package groovyx.gaelyk.spock
 
 import groovyx.gaelyk.*
 
-import java.lang.invoke.MethodHandleImpl.BindCaller.T
-
 import javax.servlet.ServletOutputStream
 import javax.servlet.http.HttpServletResponse
 
