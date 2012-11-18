@@ -1,5 +1,12 @@
 package groovyx.gaelyk.spock
 
+import groovyx.gaelyk.*
+
+import java.lang.invoke.MethodHandleImpl.BindCaller.T
+
+import javax.servlet.ServletOutputStream
+import javax.servlet.http.HttpServletResponse
+
 import com.google.appengine.api.LifecycleManager
 import com.google.appengine.api.NamespaceManager
 import com.google.appengine.api.backends.*
@@ -11,20 +18,13 @@ import com.google.appengine.api.files.*
 import com.google.appengine.api.mail.*
 import com.google.appengine.api.memcache.*
 import com.google.appengine.api.oauth.*
+import com.google.appengine.api.taskqueue.*
 import com.google.appengine.api.urlfetch.*
 import com.google.appengine.api.users.*
 import com.google.appengine.api.utils.SystemProperty
-import com.google.appengine.api.taskqueue.*
 import com.google.appengine.api.xmpp.*
 import com.google.appengine.tools.development.testing.*
-import groovyx.gaelyk.*
-import java.io.PrintWriter
-import javax.servlet.ServletOutputStream
-import javax.servlet.http.HttpServletResponse
 
-import spock.util.mop.Use;
-
-@Use(GaelykCategory)
 class GaelykUnitSpec extends spock.lang.Specification {
 	
 	def groovletInstance

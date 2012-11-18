@@ -52,6 +52,10 @@ With Continuous Integration at:
 	
 ## Release Notes
 
+### 0.4 (SNAPSHOT)
+  
+  * Upgraded to Gaelyk 2.0 SNAPSHOT
+
 ### 0.3.0.2
   
   * Compiled with Spock 0.7
