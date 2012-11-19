@@ -22,7 +22,7 @@ apply from: 'https://raw.github.com/gaelyk/gaelyk/groovy2/common-codenarc-ci.gra
 
 
 archivesBaseName = "gaelyk-spock"
-version = "0.4-SNAPSHOT"
+version = ext.gaelykSpockLatestVersion
 group = 'org.gaelyk'
 
 dependencies {
