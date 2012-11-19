@@ -68,11 +68,11 @@ modifyPom {
         name 'Gaelyk Spock'
         packaging 'jar'
         description 'Spock specification support for Gaelyk lightweight toolkit for Google App Engine.'
-        url 'https://github.com/musketyr/gaelyk-spock'
+        url 'https://github.com/gaelyk/gaelyk-spock'
 
         scm {
-            url 'scm:git://github.com/musketyr/gaelyk-spock.git'
-            connection 'scm:git://github.com/musketyr/gaelyk-spock.git'
+            url 'scm:git://github.com/gaelyk/gaelyk-spock.git'
+            connection 'scm:git://github.com/gaelyk/gaelyk-spock.git'
             developerConnection 'scm:git://github.com/musketyr/gaelyk-spock.git'
         }
 
