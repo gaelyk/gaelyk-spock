@@ -35,7 +35,7 @@ buildscript {
 }
 
 repositories {
-	mavenCentral()
+    mavenCentral()
     mavenRepo name: 'sonatype-snapshots', url: 'https://oss.sonatype.org/content/repositories/snapshots'
 }
 
@@ -47,7 +47,9 @@ dependencies {
 	compile "org.spockframework:spock-core:0.7-groovy-2.0", {
         exclude group: 'org.codehaus.groovy'
     }
-	compile "org.gaelyk:gaelyk:2.0-SNAPSHOT"
+	compile "org.gaelyk:gaelyk:2.0-SNAPSHOT", {
+            changing = true
+        }
 	compile "com.google.appengine:appengine-api-1.0-sdk:${gaeVersion}"
 	compile "com.google.appengine:appengine-api-labs:${gaeVersion}"
 	compile "com.google.appengine:appengine-api-stubs:${gaeVersion}"
