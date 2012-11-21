@@ -74,7 +74,7 @@ To test routes your specification needs to extend from `GaelykRoutingSpec`. Foll
         }
     }
 
-Have a look at [RouteSpec](https://github.com/gaelyk/gaelyk-spock/blob/master/src/test/groovy/groovyx/gaelyk/spock/RoutesSpec.groovy) which is a part of the test suite for the project to learn how to test:
+Have a look at [RoutesSpec](https://github.com/gaelyk/gaelyk-spock/blob/master/src/test/groovy/groovyx/gaelyk/spock/RoutesSpec.groovy) which is a part of the test suite for the project to learn how to test:
 
 * get, put, post, delete and all methods
 * ignored routes
