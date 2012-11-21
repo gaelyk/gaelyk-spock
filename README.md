@@ -44,6 +44,50 @@ Comprehensive examples of how to use GaelykUnitSpec with groovlets can be found 
 
 These examples cover all the possible services and bindings that groovlets running under Gaelyk have to offer. Stubbed Local Services provided by the Google App Engine SDK have been used where possible, with Spock Mocks covering all exceptional cases (`sout`, `oauth`, `channel`, `urlFetch`, `capabilities` and `backends`).
 
+## Testing routes
+
+To test routes your specification needs to extend from `GaelykRoutingSpec`. Following is a simple example of how a specification testing routes could look like:
+
+    class RoutesSpec extends GaelykRoutingSpec {
+
+        def setup() {
+            routing 'routes.groovy'
+        }
+
+        def "a get method may be routed"() {
+            expect:
+            get('/about')
+        }
+
+        def "an incorrectly routed method will not match"() {
+            expect:
+            !get('/aboutz')
+        }
+
+        def "a forward of a mapping may be configured"() {
+            expect:
+            with post('/other'), {
+                matches
+                destination == "/blog/2008/10/20/welcome-to-my-other-blog"
+                redirectionType == FORWARD
+            }
+        }
+    }
+
+Have a look at [RouteSpec](https://github.com/gaelyk/gaelyk-spock/blob/master/src/test/groovy/groovyx/gaelyk/spock/RoutesSpec.groovy) which is a part of the test suite for the project to learn how to test:
+
+* get, put, post, delete and all methods
+* ignored routes
+* destination
+* redirection types
+* email and jabber routes
+* single and double star wildcards
+* cached routes
+* route variables extraction
+* route validators
+* capability-aware routes
+* namespaced routes
+
 ## Source Code
 This can be found at:
     <https://github.com/marcoVermeulen/gaelyk-spock>
@@ -51,6 +95,10 @@ With Continuous Integration at:
 	<http://hashcode.co:9001/job/gaelyk-spock/>
 	
 ## Release Notes
+
+### Upcoming release
+
+  * **Breaking Change** New API of `GaelykRoutingSpec` covering more testing scenarios for routes
 
 ### 0.3.0.2
   
