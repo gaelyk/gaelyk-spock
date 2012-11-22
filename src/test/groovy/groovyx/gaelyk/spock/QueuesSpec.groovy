@@ -32,6 +32,6 @@ class QueueSpec extends GaelykUnitSpec {
 		
 		then:
 		queuesGroovlet.request.someQueue == 'default'
-		queuesGroovlet.request.task =~ 'task.*'
+		queuesGroovlet.request.task.startsWith 'task'
 	}
 }
