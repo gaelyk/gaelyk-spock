@@ -9,7 +9,7 @@ sourceCompatibility = compatibilityVersion
 targetCompatibility = compatibilityVersion
 
 archivesBaseName = "gaelyk-spock"
-version = "0.3.0.2"
+version = "0.3.1"
 group = 'org.gaelyk'
 
 buildscript {
@@ -68,12 +68,12 @@ modifyPom {
 		name 'Gaelyk Spock'
 		packaging 'jar'
 		description 'Spock specification support for Gaelyk lightweight toolkit for Google App Engine.'
-		url 'https://github.com/musketyr/gaelyk-spock'
+		url 'https://github.com/gaelyk/gaelyk-spock'
 
 		scm {
-			url 'scm:git://github.com/musketyr/gaelyk-spock.git'
-			connection 'scm:git://github.com/musketyr/gaelyk-spock.git'
-			developerConnection 'scm:git://github.com/musketyr/gaelyk-spock.git'
+			url 'scm:git://github.com/gaelyk/gaelyk-spock.git'
+			connection 'scm:git://github.com/gaelyk/gaelyk-spock.git'
+			developerConnection 'scm:git://github.com/gaelyk/gaelyk-spock.git'
 		}
 
 		licenses {
@@ -93,6 +93,10 @@ modifyPom {
 				id 'marcoVermeulen'
 				name 'Marco Vermeulen'
 			}
+            developer {
+                id 'erdi'
+                name 'Marcin Erdmann'
+            }
 		}
 	}
 }

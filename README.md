@@ -96,7 +96,7 @@ With Continuous Integration at:
 	
 ## Release Notes
 
-### Upcoming release
+### 0.3.1
 
   * **Breaking Change** New API of `GaelykRoutingSpec` covering more testing scenarios for routes
 
