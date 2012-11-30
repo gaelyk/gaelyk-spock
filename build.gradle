@@ -10,15 +10,6 @@ buildscript {
 
 apply from: 'https://raw.github.com/gaelyk/gaelyk/groovy2/common.gradle'
 apply from: 'https://raw.github.com/gaelyk/gaelyk/groovy2/common-nexus.gradle'
- 
- 
-/**
- * http://evgeny-goldin.com/wiki/Gradle-CodeNarc-plugin
- */
-ext.codenarcPriority1Violations = 0     // Work
-ext.codenarcPriority2Violations = 227   // in
-ext.codenarcPriority3Violations = 983   // progress ..
-apply from: 'https://raw.github.com/gaelyk/gaelyk/groovy2/common-codenarc-ci.gradle'
 
 
 archivesBaseName = "gaelyk-spock"
