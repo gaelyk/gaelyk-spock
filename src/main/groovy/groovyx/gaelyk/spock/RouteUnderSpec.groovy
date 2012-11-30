@@ -7,6 +7,7 @@ class RouteUnderSpec {
 	Map variables
 	String testedPath
 	String namespace
+    String destination
 
 	@Delegate
 	Route route
@@ -27,6 +28,14 @@ class RouteUnderSpec {
 	void setNamespace(String namespace) {
 		this.namespace = namespace
 	}
+    
+    String getDestination() {
+        return destination
+    }
+
+    void setDestination(String destination) {
+        this.destination = destination
+    }
 
 	boolean asBoolean() {
 		matches
