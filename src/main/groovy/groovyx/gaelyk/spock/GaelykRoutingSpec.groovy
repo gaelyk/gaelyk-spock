@@ -2,6 +2,7 @@ package groovyx.gaelyk.spock
 
 import groovyx.gaelyk.routes.HttpMethod
 import groovyx.gaelyk.routes.Route
+import spock.lang.Shared;
 import spock.util.mop.Use
 
 import javax.servlet.http.HttpServletRequest
@@ -10,16 +11,18 @@ import static groovyx.gaelyk.routes.HttpMethod.*
 
 class GaelykRoutingSpec extends GaelykSpec {
 
-	def routesUnderSpec
+	@Shared def routesUnderSpec
 
 	def routing = { scriptFile ->
+        if(loadRoutesOnlyOnce && routesUnderSpec){
+            return
+        }
 		routesUnderSpec = new RoutesUnderSpec("${scriptFile}", new Binding(
 				['datastore', 'memcache', 'mail', 'urlFetch', 'images', 'users', 'user', 'defaultQueue', 'queues', 'xmpp',
 						'blobstore', 'files', 'oauth', 'channel', 'capabilities', 'namespace', 'localMode', 'app', 'backends',
 						'lifecycle'
 				].inject([:]) { map, variableName ->  map << new MapEntry(variableName, this[variableName]) }
 		))
-		this.metaClass."${scriptFile.tokenize('.').first()}" = routesUnderSpec
 	}
 
 	RouteUnderSpec get(String path) {
@@ -121,4 +124,12 @@ class GaelykRoutingSpec extends GaelykSpec {
 
 		routeForMethod(request, method)
 	}
+    
+    boolean isLoadRoutesOnlyOnce(){
+        return false
+    }
+    
+    RoutesUnderSpec getRoutes(){
+        routesUnderSpec
+    }
 }
