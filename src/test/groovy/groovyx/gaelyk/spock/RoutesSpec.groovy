@@ -53,7 +53,10 @@ class RoutesSpec extends GaelykRoutingSpec {
 	def "a post method incorrectly routed will not match"() {
 		expect:
 		!post('/otherz')
-	}
+	}    
+    LocalServiceTestHelper createLocalTestHelper(){
+        return new LocalServiceTestHelper()
+    }
 
 	def "a route can be ignored"() {
 		expect:
