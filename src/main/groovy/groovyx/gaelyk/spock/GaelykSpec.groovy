@@ -39,17 +39,7 @@ class GaelykSpec extends Specification {
 		SystemProperty.applicationId.set("1234")
 		SystemProperty.applicationVersion.set("1.0")
 
-		helper = new LocalServiceTestHelper(
-				new LocalDatastoreServiceTestConfig(),
-				new LocalMemcacheServiceTestConfig(),
-				new LocalMailServiceTestConfig(),
-				new LocalImagesServiceTestConfig(),
-				new LocalUserServiceTestConfig(),
-				new LocalTaskQueueTestConfig(),
-				new LocalXMPPServiceTestConfig(),
-				new LocalBlobstoreServiceTestConfig(),
-				new LocalFileServiceTestConfig()
-		)
+		helper = crateLocalTestHelper()
 		customizeHelper(helper)
 		helper.setUp()
 
@@ -94,4 +84,18 @@ class GaelykSpec extends Specification {
 	}
 
 	void customizeHelper(LocalServiceTestHelper helper) {}
+    
+    LocalServiceTestHelper crateLocalTestHelper(){
+        new LocalServiceTestHelper(
+            new LocalDatastoreServiceTestConfig(),
+            new LocalMemcacheServiceTestConfig(),
+            new LocalMailServiceTestConfig(),
+            new LocalImagesServiceTestConfig(),
+            new LocalUserServiceTestConfig(),
+            new LocalTaskQueueTestConfig(),
+            new LocalXMPPServiceTestConfig(),
+            new LocalBlobstoreServiceTestConfig(),
+            new LocalFileServiceTestConfig()
+       )
+    }
 }
