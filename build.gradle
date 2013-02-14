@@ -8,8 +8,8 @@ buildscript {
 	}
 }
 
-apply from: 'https://raw.github.com/gaelyk/gaelyk/groovy2/common.gradle'
-apply from: 'https://raw.github.com/gaelyk/gaelyk/groovy2/common-nexus.gradle'
+apply from: 'https://raw.github.com/gaelyk/gaelyk/master/common.gradle'
+apply from: 'https://raw.github.com/gaelyk/gaelyk/master/common-nexus.gradle'
 
 
 archivesBaseName = "gaelyk-spock"
