@@ -104,7 +104,7 @@ class GaelykRoutingSpec extends GaelykSpec {
 
 		def result = routesUnderSpec.routes.findResult(new RouteUnderSpec()) { Route route ->
 			if (route.method in allowedMethods) {
-				def resolvedRouteProperties = route.forUri(request)
+				def resolvedRouteProperties = route.forUri(request.requestURI, request)
 				if (resolvedRouteProperties.matches) {
 					def routeUnderSpec = new RouteUnderSpec(route, resolvedRouteProperties)
 					routeUnderSpec
