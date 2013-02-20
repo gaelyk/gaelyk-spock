@@ -72,9 +72,9 @@ class GroovletUnderSpec {
     private convertParamsToStrings(){
         binding.params = binding.params.collectEntries { k, v ->
             if(v instanceof Collection){
-                return [k: v.collect { it?.toString() }]
+                return [(k): v.collect { it?.toString() }]
             }
-            [k: v?.toString()]
+            [(k): v?.toString()]
         }
     }
 }
