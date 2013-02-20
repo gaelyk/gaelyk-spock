@@ -31,27 +31,27 @@ class GroovletUnderSpec {
         binding.setVariable 'log', log
     }
 
-    void get(){
+    def get(){
         binding.request.method = 'GET'
         run()
     }
 
-    void post(){
+    def post(){
         binding.request.method = 'POST'
         run()
     }
 
-    void put(){
+    def put(){
         binding.request.method = 'PUT'
         run()
     }
 
-    void delete(){
+    def delete(){
         binding.request.method = 'DELETE'
         run()
     }
 
-    void run(){
+    def run(){
         def result = gse.run scriptName, binding
         logging = this.log.buffer
         println logging
