@@ -52,6 +52,7 @@ class GroovletUnderSpec {
     }
 
     def run(){
+        convertParamsToStrings()
         def result = gse.run scriptName, binding
         logging = this.log.buffer
         println logging
@@ -65,5 +66,15 @@ class GroovletUnderSpec {
 
     def propertyMissing(String name){
         binding.getVariable name
+    }
+
+
+    private convertParamsToStrings(){
+        binding.params = binding.params.collectEntries { k, v ->
+            if(v instanceof Collection){
+                return [k: v.collect { it?.toString() }]
+            }
+            [k: v?.toString()]
+        }
     }
 }
