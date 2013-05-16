@@ -98,8 +98,9 @@ With Continuous Integration at:
 
 ### 0.4
   
-  * Upgraded to Gaelyk 2.0
+  * Upgraded to Gaelyk 2.0 and Groovy 2.0
   * **Breaking Change** New API of `GaelykRoutingSpec` covering more testing scenarios for routes
+  * Ability to override GAE helper creation via `createLocalTestHelper()`
 
 ### 0.3.0.2
   
