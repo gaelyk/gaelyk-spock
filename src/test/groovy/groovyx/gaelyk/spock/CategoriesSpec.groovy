@@ -1,9 +1,8 @@
 package groovyx.gaelyk.spock
 
-import com.google.appengine.api.datastore.Entity;
+import spock.util.mop.Use
 
-import groovyx.gaelyk.GaelykCategory;
-import spock.util.mop.Use;
+import com.google.appengine.api.datastore.Entity
 
 @Use(ReverseCategory)
 class CategoriesSpec extends GaelykUnitSpec {

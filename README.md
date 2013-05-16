@@ -96,8 +96,9 @@ With Continuous Integration at:
 	
 ## Release Notes
 
-### 0.3.1
-
+### 0.4
+  
+  * Upgraded to Gaelyk 2.0
   * **Breaking Change** New API of `GaelykRoutingSpec` covering more testing scenarios for routes
 
 ### 0.3.0.2

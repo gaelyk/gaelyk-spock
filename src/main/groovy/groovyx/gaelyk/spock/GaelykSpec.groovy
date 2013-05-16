@@ -16,14 +16,12 @@ import com.google.appengine.api.urlfetch.URLFetchService
 import com.google.appengine.api.users.UserServiceFactory
 import com.google.appengine.api.utils.SystemProperty
 import com.google.appengine.api.xmpp.XMPPServiceFactory
-import groovyx.gaelyk.GaelykCategory
 import groovyx.gaelyk.ImagesServiceWrapper
 import groovyx.gaelyk.QueueAccessor
 import spock.lang.Specification
 import spock.util.mop.Use
 import com.google.appengine.tools.development.testing.*
 
-@Use(GaelykCategory)
 class GaelykSpec extends Specification {
 
 	LocalServiceTestHelper helper

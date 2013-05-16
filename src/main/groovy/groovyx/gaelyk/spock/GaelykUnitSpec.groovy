@@ -8,7 +8,7 @@ class GaelykUnitSpec extends GaelykSpec {
 	def groovletInstance
 	def sout, out, response
 
-	void setup() {
+	def setup() {
 		sout = Mock(ServletOutputStream)
 		out = Mock(PrintWriter)
 		response = Mock(HttpServletResponse)

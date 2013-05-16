@@ -1,6 +1,5 @@
 package groovyx.gaelyk.spock
 
-import groovyx.gaelyk.ExpirationTimeCategory
 import groovyx.gaelyk.routes.HttpMethod
 import groovyx.gaelyk.routes.Route
 import spock.lang.Shared;
@@ -10,7 +9,6 @@ import javax.servlet.http.HttpServletRequest
 
 import static groovyx.gaelyk.routes.HttpMethod.*
 
-@Use(ExpirationTimeCategory)
 class GaelykRoutingSpec extends GaelykSpec {
 
 	@Shared def routesUnderSpec
@@ -106,7 +104,7 @@ class GaelykRoutingSpec extends GaelykSpec {
 
 		def result = routesUnderSpec.routes.findResult(new RouteUnderSpec()) { Route route ->
 			if (route.method in allowedMethods) {
-				def resolvedRouteProperties = route.forUri(request)
+				def resolvedRouteProperties = route.forUri(request.requestURI, request)
 				if (resolvedRouteProperties.matches) {
 					def routeUnderSpec = new RouteUnderSpec(route, resolvedRouteProperties)
 					routeUnderSpec
