@@ -13,7 +13,7 @@ apply from: 'https://raw.github.com/gaelyk/gaelyk/master/common-nexus.gradle'
 
 
 archivesBaseName = "gaelyk-spock"
-version = ext.gaelykSpockLatestVersion
+version = '0.5'
 group = 'org.gaelyk'
 
 dependencies {
