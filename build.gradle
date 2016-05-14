@@ -4,12 +4,12 @@ buildscript {
 	}
 
 	dependencies {
-		classpath 'org.gradle.api.plugins:gradle-nexus-plugin:0.2'
+		classpath 'com.bmuschko:gradle-nexus-plugin:2.3.1'
 	}
 }
 
 apply from: 'https://raw.github.com/gaelyk/gaelyk/master/common.gradle'
-apply from: 'https://raw.github.com/gaelyk/gaelyk/master/common-nexus.gradle'
+// apply from: 'https://raw.github.com/gaelyk/gaelyk/master/common-nexus.gradle'
 
 
 archivesBaseName = "gaelyk-spock"
@@ -17,23 +17,23 @@ version = '0.5'
 group = 'org.gaelyk'
 
 dependencies {
-	groovy "org.codehaus.groovy:groovy-all:$ext.gaelykGroovyVersion", {
+	compile "org.codehaus.groovy:groovy-all:$project.ext.gaelykGroovyVersion", {
         force = true
     }
-	compile "org.spockframework:spock-core:$ext.gaelykSpockVersion", {
+	compile "org.spockframework:spock-core:$project.ext.gaelykSpockVersion", {
         exclude group: 'org.codehaus.groovy'
     }
-	compile "org.gaelyk:gaelyk:${ext.gaelykLatestVersion}"
-	compile "com.google.appengine:appengine-api-1.0-sdk:${ext.gaelykAppEngineVersion}"
-	compile "com.google.appengine:appengine-api-labs:${ext.gaelykAppEngineVersion}"
-	compile "com.google.appengine:appengine-api-stubs:${ext.gaelykAppEngineVersion}"
-	compile "com.google.appengine:appengine-testing:${ext.gaelykAppEngineVersion}"
+	compile "org.gaelyk:gaelyk:${project.ext.gaelykLatestVersion}"
+	compile "com.google.appengine:appengine-api-1.0-sdk:${project.ext.gaelykAppEngineVersion}"
+	compile "com.google.appengine:appengine-api-labs:${project.ext.gaelykAppEngineVersion}"
+	compile "com.google.appengine:appengine-api-stubs:${project.ext.gaelykAppEngineVersion}"
+	compile "com.google.appengine:appengine-testing:${project.ext.gaelykAppEngineVersion}"
 	compile "javax.servlet:servlet-api:2.5"
 	compile "javax.servlet.jsp:jsp-api:2.2"
 	compile "cglib:cglib-nodep:2.2"
 	compile "org.objenesis:objenesis:1.2"
 }
-
+/*
 modifyPom {
     project {
         name 'Gaelyk Spock'
@@ -71,3 +71,4 @@ modifyPom {
 		}
 	}
 }
+*/
